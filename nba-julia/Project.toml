@@ -1,0 +1,4 @@
+[deps]
+CodecZlib = "944b1d66-785c-5afd-91f1-9de20f533193"
+GZip = "92fee26a-97fe-5a0c-ad85-20a5f3185b63"
+RecipesBase = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"

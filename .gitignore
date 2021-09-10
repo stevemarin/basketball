@@ -1,0 +1,7 @@
+*.json
+/data
+.idea/**
+*.pyc
+build/**
+dist/**
+movement.egg-info/**
