@@ -82,7 +82,7 @@ StructTypes.StructType(::Type{Moment}) = StructTypes.ArrayType()
 StructTypes.StructType(::Type{Event}) = StructTypes.Struct()
 StructTypes.StructType(::Type{Game}) = StructTypes.Struct()
 
-game = open("..\\data\\12.25.2015.LAC.at.LAL\\0021500440.json", "r") do f
+game = open("..\\nba-movement-data\\data\\12.25.2015.LAC.at.LAL\\0021500440.json", "r") do f
 # game = open("crap.json", "r") do f
     JSON3.read(f, Game)
 end;
