@@ -1,4 +1,9 @@
 
+# TODO figure out how to clean up the Moment & Location conversion stuff
+# TODO use types better and improve StructTypes usage
+# TODO add names or an identifier to plot
+# TODO deal with missing data somehow
+
 import Pkg
 
 Pkg.activate(".")
@@ -217,6 +222,3 @@ Plots.@gif for i ∈ 1:length(event.moments)
 end
 
 # Plots.gif(anim, "anim_fps15.gif", fps=15)
-
-# TODO add names or an identifier to plot
-# TODO deal with missing data somehow
