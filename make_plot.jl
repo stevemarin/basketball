@@ -54,11 +54,12 @@ struct Moment
     millis:: Int64
     game_clock:: Float64
     shot_clock:: Float64
-    unknown:: Any
+    unknown:: Nothing
     locations:: Vector{Location}
 end
 
 function Moment(v:: Vector{Any})
+    @assert length(v) == 6
     Moment(v[1], v[2], v[3] isa Nothing ? 0.0 : v[3], v[4] isa Nothing ? 0.0 : v[4], v[5], v[6])
 end
 
@@ -75,15 +76,15 @@ struct Game
     events:: Vector{Event}
 end
 
-StructTypes.StructType(::Type{Player}) = StructTypes.Struct()
-StructTypes.StructType(::Type{Team}) = StructTypes.Struct()
-StructTypes.StructType(::Type{Location}) = StructTypes.ArrayType()
+# required to work with JSON3 package
+StructTypes.StructType(::Type{Player}) = StructTypes.OrderedStruct()
+StructTypes.StructType(::Type{Team}) = StructTypes.OrderedStruct()
+StructTypes.StructType(::Type{Location}) = StructTypes.OrderedStruct()
 StructTypes.StructType(::Type{Moment}) = StructTypes.ArrayType()
-StructTypes.StructType(::Type{Event}) = StructTypes.Struct()
-StructTypes.StructType(::Type{Game}) = StructTypes.Struct()
+StructTypes.StructType(::Type{Event}) = StructTypes.OrderedStruct()
+StructTypes.StructType(::Type{Game}) = StructTypes.OrderedStruct()
 
 game = open("..\\nba-movement-data\\data\\12.25.2015.LAC.at.LAL\\0021500440.json", "r") do f
-# game = open("crap.json", "r") do f
     JSON3.read(f, Game)
 end;
 
